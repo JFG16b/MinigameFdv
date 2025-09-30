@@ -553,6 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6f94ad47f856b438d8fa7695317171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::jugador
+  thrustForce: 200
+  rotationSpeed: 100
 --- !u!54 &1505427042
 Rigidbody:
   m_ObjectHideFlags: 0
