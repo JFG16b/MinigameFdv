@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class jugador : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
     public float thrustForce = 5f;
@@ -9,6 +10,9 @@ public class jugador : MonoBehaviour
     public GameObject gun, bulletPrefab;
     private Rigidbody _rigid;
 
+    public float xBorderLimit;
+    public float yBorderLimit;
+    public static int SCORE = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +22,16 @@ public class jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        var newPos = transform.position;
+        if (newPos.x > xBorderLimit)
+            newPos.x = -xBorderLimit + 1;
+        else if (newPos.x < -xBorderLimit)
+            newPos.x = xBorderLimit - 1;
+        else if (newPos.y > yBorderLimit)
+            newPos.y = -yBorderLimit + 1;
+        else if (newPos.y < -yBorderLimit)
+            newPos.y = yBorderLimit - 1;
+        transform.position = newPos;
         float rotation = Input.GetAxis("Horizontal") * Time.deltaTime;
         float thrust = Input.GetAxis("Vertical") * Time.deltaTime;
 
@@ -36,5 +49,16 @@ public class jugador : MonoBehaviour
 
             balaScript.targetVector = transform.right;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            SCORE = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+        }
+
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9074300104929269550}
   - component: {fileID: 1836441764339590517}
   - component: {fileID: 601590075013222654}
+  - component: {fileID: 1728961831552392651}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -103,6 +104,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4af4e5598ba3048ae546308ddbc1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 2
+  speed: 5
   maxLifeTime: 5
   targetVector: {x: 1, y: 0, z: 0}
+--- !u!65 &1728961831552392651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733140295569590524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04, y: 0.04, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

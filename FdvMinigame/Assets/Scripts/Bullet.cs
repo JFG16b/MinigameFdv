@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -17,4 +19,31 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(speed * targetVector * Time.deltaTime);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+      
+       
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                IncrementScore();
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
+
+    }
+
+    private void IncrementScore()
+    {
+        Player.SCORE++;
+        UpdateScoreText();
+    }
+
+    private void UpdateScoreText()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("UI");
+        go.GetComponent<Text>().text = "Puntos : " + Player.SCORE;
+    }
+
+     
 }
